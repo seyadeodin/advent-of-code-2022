@@ -356,5 +356,36 @@ const result = inputToArray.reduce((acc, [compartment1, compartment2]) => {
 // .map(getPuncutation)
 // .reduce((acc, curr) => acc + curr)
 
-console.log("🚀 ~ file: 3.js:334 ~ result ~ result:", result)
+//console.log("🚀 ~ file: 3.js:334 ~ result ~ result:", result)
 
+const inputToArray2 = input.split('\n')
+console.log("🚀 ~ file: 3.js:362 ~ inputToArray2:", inputToArray2)
+
+function getRepeatingLetterValue(sack1, sack2, sack3){
+  console.log("🚀 ~ file: 3.js:365 ~ getRepeatingLetterValue ~ sack3:", sack3)
+  console.log("🚀 ~ file: 3.js:365 ~ getRepeatingLetterValue ~ sack2:", sack2)
+  console.log("🚀 ~ file: 3.js:365 ~ getRepeatingLetterValue ~ sack1:", sack1)
+  const firstTwo = sack1.split('').reduce((acc, curr) => {
+    const newItem = sack2.split('').find(item => item === curr)
+    newItem && acc.push(newItem)
+    return acc;
+  },[])
+
+  repeatingItem = firstTwo.reduce((acc, curr) => {
+    const newItem = sack3.split('').find(item => item === curr)
+    console.log("🚀 ~ file: 3.js:372 ~ repeatingItem=firstTwo.reduce ~ newItem:", newItem)
+    newItem && acc.push(newItem)
+    return acc;
+  },[])
+
+  return getPuncutation(repeatingItem[0])
+}
+
+let repeatingLettersPoints = [];
+for(let c = 0; c < inputToArray2.length;) {
+    const points = getRepeatingLetterValue(inputToArray2[c], inputToArray2[c+1], inputToArray2[c+2])
+    repeatingLettersPoints.push(points)
+    c += 3
+}
+
+console.log(repeatingLettersPoints.reduce((acc, curr) => acc + curr))
